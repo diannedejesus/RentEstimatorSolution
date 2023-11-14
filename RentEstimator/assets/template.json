@@ -1,0 +1,106 @@
+{
+  "page1": [
+    {
+      "type": "title",
+      "content": "¿Puedo Pagar la Unidad que Escogí?"
+    },
+
+    {
+      "type": "subtitle",
+      "content": "Cuando la renta bruto es mayor al estándar de pago"
+    },
+
+    {
+      "type": "paragraph",
+      "content": "En los programas de Sección 8, primero se fija un subsidio máximo. El subsidio máximo es basado en el \"estándar de pago\" establecido por cada Programa de Vivienda. Si desea alquilar una unidad cuyo renta bruto (renta sumada a utilidades) es más alto que el estándar de pago, tendrás que pagar el exceso en adición al “pago total de inquilino” designado, el mismo es basado en un porcentaje de tu ingreso."
+    },
+
+    {
+      "type": "paragraph",
+      "content": "Las regulaciones del programa prohíben que una familia pague más de un 40% de su ingreso mensual ajustado si la renta para la unidad es mayor que el estándar de pago, cuando la asistencia de alquilar para una unidad comienza. La siguiente información es proveída para asistirte en encontrar una unidad con un pago razonable para usted y elegible dentro de la guía de un máximo de 40%."
+    },
+
+    {
+      "type": "table",
+      "content": [
+        [ "Estander de Pago", "{{estander}}" ],
+        [ "Pago de Inquilino*", "{{pagoInquilino}}" ],
+        [ "SUBSIDIO MÁXIMO =", "{{subsidioMaximo}}" ]
+      ]
+    },
+
+    {
+      "type": "table",
+      "content": [
+        [ "SUBSIDIO MÁXIMO =", "{{subsidioMaximo}}" ],
+        [ "40% del Ingreso Mensual Ajustado*", "{{fortyPercent}}" ],
+        [ "Renta Bruto MÁXIMO Permitido =", "{{rentaMaximo}}" ]
+      ]
+    },
+
+    {
+      "type": "table",
+      "content": [
+        [ "Renta Estimada", "{{rentEstimada}}" ]
+      ]
+    },
+
+    {
+      "type": "subtext",
+      "content": "* El mayor de (1) 10 por ciento de ingreso mensual, (2) 30 por ciento del ingreso mensual ajustado, o (3) la renta mínima [$50.00]."
+    },
+
+    {
+      "type": "subtext",
+      "content": "**Renta Bruta = renta sumado a todos los utilidades al ser pagado por el inquilino."
+    }
+  ],
+  "page2": [
+      {
+        "type": "title",
+        "content": "¿Cuál es el Costo de la Unidad?"
+      },
+
+    {
+      "type": "table2",
+      "bg": "false",
+      "content": [
+        [ "Renta Solicitado", "$__________" ]
+      ]
+    },
+
+      {
+        "type": "header",
+        "content": "Utilidades no incluidos"
+      },
+
+      {
+        "type": "paragraph",
+        "content": "Anote la cantidad de cada servicio según estipulado en la hoja de utilidades dentro de su, paquete."
+      },
+
+    {
+      "type": "table2",
+      "bg": "true",
+      "content": [
+        [ "Cocinar gas/eléctrico", "{{cooking}}" ],
+        [ "Electricidad", "{{electricity}}" ],
+        [ "Aire Acondicionado", "{{airconditioning}}" ],
+        [ "Calentador", "{{waterheater}}" ],
+        [ "Agua", "{{water}}" ],
+        [ "Alcantarillado", "{{sewer}}" ],
+        [ "Microhonda", "{{microwave}}" ],
+        [ "Nevera", "{{refridgerator}}" ]
+      ]
+    },
+
+    {
+      "type": "table2",
+      "bg": "false",
+      "content": [
+        [ "Total de Utilidades", "$__________" ],
+        [ "Renta Bruta", "$__________" ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "Bedroom": 0,
+    "Electricity": 72,
+    "Water": 14,
+    "Sewer": 10,
+    "Fridge": 4,
+    "Cooking": 2,
+    "Microwave": 1
+  },
+  {
+    "Bedroom": 1,
+    "Electricity": 99,
+    "Water": 22,
+    "Sewer": 18,
+    "Fridge": 4,
+    "Cooking": 2,
+    "Microwave": 1
+  },
+  {
+    "Bedroom": 2,
+    "Electricity": 127,
+    "Water": 30,
+    "Sewer": 25,
+    "Fridge": 4,
+    "Cooking": 2,
+    "Microwave": 1
+  },
+  {
+    "Bedroom": 3,
+    "Electricity": 154,
+    "Water": 37,
+    "Sewer": 31,
+    "Fridge": 4,
+    "Cooking": 2,
+    "Microwave": 1
+  },
+  {
+    "Bedroom": 4,
+    "Electricity": 195,
+    "Water": 47,
+    "Sewer": 39,
+    "Fridge": 4,
+    "Cooking": 2,
+    "Microwave": 1
+  }
+]

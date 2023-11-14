@@ -1,0 +1,25 @@
+﻿<Window x:Class="RentEstimator.EditText"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentEstimator"
+        mc:Ignorable="d"
+        Height="320" Width="350" WindowStyle="ToolWindow">
+    <StackPanel>
+        <Label x:Name="title" Content="Edit Header + Footer" HorizontalContentAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" />
+        <Label x:Name="logopathLabel" Content="Logo" Width="250" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <TextBox x:Name="logopathTextbox" TextWrapping="Wrap" Text="" FontSize="24" Height="30" Width="200" />
+            <Button x:Name="logopathButton" Content="Find" Width="50" Height="30"  BorderBrush="Transparent"  Click="LogopathButton_Click"/>
+        </StackPanel>
+        
+
+        <Label x:Name="footerLabel" Content="Footer" Width="250"/>
+        <TextBox x:Name="footer1Textbox" TextWrapping="Wrap" Text="" FontSize="24" Height="30" Width="250" Margin="0,0,0,5"/>
+        <TextBox x:Name="footer2Textbox" TextWrapping="Wrap" Text="" FontSize="24" Height="30" Width="250" Margin="0,0,0,20" />
+
+        <Button x:Name="updateTextButton" Content="Update" Width="120" Height="38" BorderBrush="Transparent" Click="UpdateTextButton_Click"/>
+
+    </StackPanel>
+</Window>
