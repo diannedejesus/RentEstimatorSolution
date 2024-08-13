@@ -78,7 +78,7 @@ namespace RentEstimator
                 replacemntValues.Add("{{pagoInquilino}}", $"${Math.Round(calculate.TTPDetermination(), 2, MidpointRounding.AwayFromZero):0.00}");
                 replacemntValues.Add("{{subsidioMaximo}}", $"${(calculate.MaxSubsidy()):0.00}");
                 replacemntValues.Add("{{fortyPercent}}", $"${Math.Round(calculate.FortypercentAdjusted(), 2, MidpointRounding.AwayFromZero):0.00}"); //--------------------------------
-                replacemntValues.Add("{{rentaMaximo}}", $"${(calculate.GrossRent()):0.00}");
+                replacemntValues.Add("{{rentaMaximo}}", $"${(calculate.GrossRent()-calculate.TotalUtilities(voucherSize)):0.00}");
                 replacemntValues.Add("{{rentEstimada}}", $"${RentCalculations.RoundOff(calculate.LowestRent())}.00 - ${RentCalculations.RoundOff(calculate.GrossRent())}.00");
 
                 replacemntValues.Add("{{cooking}}", $"${calculate.GetUtilityAmount(voucherSize, "cooking")}.00");

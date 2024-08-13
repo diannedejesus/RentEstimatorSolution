@@ -91,7 +91,7 @@ namespace RentEstimator
                 //ValidationRule current = new UtilitiesValidationRule();
                 //ValidationResult verifying =  current.Validate(utilityAllowance);
 
-                //new ReadandParseJsonFile(@"utilityAllowance.json").StreamWrite(utilityAllowance);
+                new ReadandParseJsonFile(@"assets/utilityAllowance.json").StreamWrite(utilityAllowance);
 
                 //verify that file was updated corectly
                 MessageBox.Show("Update completed.");
