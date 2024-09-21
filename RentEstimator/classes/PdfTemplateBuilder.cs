@@ -68,6 +68,27 @@ namespace RentEstimator
                         }
                         currentPDF.AddTwoCellLayout(tableline, contentItem["bg"].ToString() == "true");
                     }
+                    else if (contentItem["type"].ToString() == "table2Header")
+                    {
+                        List<string[]> tableline = JsonSerializer.Deserialize<List<string[]>>((JsonElement)contentItem["content"], _options);
+                        foreach (var item in tableline)
+                        {
+                            item[1] = replaceValues(item[1].ToString());
+                        }
+                        currentPDF.AddTwoCellLayoutHeader(tableline, contentItem["bg"].ToString() == "true");
+                    }else if (contentItem["type"].ToString() == "table3")
+                    {
+                        Dictionary<string, string[]> tableline = JsonSerializer.Deserialize<Dictionary<string, string[]>>((JsonElement)contentItem["content"], _options);
+                        foreach (var item in tableline)
+                        {
+                            for(int i=0; i<item.Value.Length; i++)
+                            {
+                                tableline[item.Key][i] = replaceValues(tableline[item.Key][i].ToString());
+                            }
+                                
+                        }
+                        currentPDF.CreateTableLayout2(tableline);
+                    }
                     else
                     {
                         currentPDF.AddTextPdf(contentItem["content"].ToString(), contentItem["type"].ToString());

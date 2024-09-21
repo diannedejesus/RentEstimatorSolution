@@ -196,7 +196,7 @@ namespace RentCalculator
 
             foreach(var item in utilityAllowance)
             {
-                if (!includesWater && item.Bedroom == voucherSize) 
+                if (item.Bedroom == voucherSize) 
                 {
                     if (!includesWater) { utilitesTotal += item.Water; }
                     if (!includesElectricity) { utilitesTotal += item.Electricity; }
@@ -242,7 +242,7 @@ namespace RentCalculator
             decimal monthlyAdjusted = AdjustedAnnualIncome() / 12;
             return monthlyAdjusted * .4m;
         }
-        public decimal GrossRent()
+        public decimal MaxRentIncome()
         {
             decimal adjustedMonthlyx4 = FortypercentAdjusted();
             decimal maxSubsidy = MaxSubsidy();
@@ -253,7 +253,7 @@ namespace RentCalculator
         public decimal LowestRent()
         {
             decimal totalUtilities = TotalUtilities(_voucherSize);
-            decimal minGrossRent = GrossRent() - totalUtilities;
+            decimal minGrossRent = MaxRentIncome() - totalUtilities;
             decimal minPaymentStandard = GetFMR() - totalUtilities;
 
             return Math.Min(minGrossRent, minPaymentStandard);
@@ -263,6 +263,9 @@ namespace RentCalculator
             return ((int)Math.Floor(i / 10)) * 10;
         }
 
-
+        public decimal GrossRent(int rentAmount)
+        {
+            return 0;
+        }
     }
 }

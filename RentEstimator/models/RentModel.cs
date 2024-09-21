@@ -13,6 +13,7 @@ namespace RentEstimator
         private decimal _annualIncome;
         private int _dependants;
         private bool _elderlyOrDisabled;
+        private decimal _TTP;
 
         public int VoucherSize
         {
@@ -29,6 +30,15 @@ namespace RentEstimator
             set
             {
                 OnPropertyChanged(ref _annualIncome, value);
+            }
+        }
+
+        public decimal TTP
+        {
+            get { return _TTP; }
+            set
+            {
+                OnPropertyChanged(ref _TTP, value);
             }
         }
 

@@ -1,0 +1,120 @@
+﻿<Window x:Class="RentEstimator.rentCalculator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentEstimator"
+        mc:Ignorable="d"
+        Title="Rent Calculator" Height="400" Width="600">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel>
+            <GroupBox x:Name="lowestRentgroupBox" Header="Lowest">
+                <StackPanel>
+                    <Label x:Name="lowestRentLabel" Content="Total Rent" Width="120"  Padding="0" Margin="0,5,0,0">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Border BorderThickness="1" CornerRadius="6" Height="40" BorderBrush="#FFABADB3">
+                        <TextBlock x:Name="lowestRentTextBlock" InputScope="Digits" Width="120" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,1"/>
+                    </Border>
+                    <Label x:Name="rentUtiliesLowLabel" Content="Utilities/Tenant Rent" Width="120"  Padding="0" Margin="0,5,0,0">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Border BorderThickness="1" CornerRadius="6" Height="40" BorderBrush="#FFABADB3">
+                        <TextBlock x:Name="rentUtiliesLowBlock" InputScope="Digits" Width="120" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,1"/>
+                    </Border>
+                </StackPanel>
+            </GroupBox>
+            <Label x:Name="TTPLabel" Content="Tenant Pay" Width="100" Padding="0" Margin="0,5,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                <TextBlock x:Name="TTPTextBlock" InputScope="Digits" Text="324.00" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2"/>
+            </Border>
+            <Label x:Name="maxsubsidyLabel" Content="Subsidy (-Income)" Width="100" Padding="0" Margin="0,5,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                <TextBlock x:Name="maxsubsidyTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" />
+            </Border>
+        </StackPanel>
+        
+        <StackPanel>
+            <GroupBox x:Name="highRentgroupBox" Header="Highest">
+                <StackPanel>
+                    <Label x:Name="highestRentLabel" Content="Total Rent" Width="120"  Padding="0" Margin="0,5,0,0">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Border BorderThickness="1" CornerRadius="6" Height="40" BorderBrush="#FFABADB3">
+                        <TextBlock x:Name="highestRentTextBlock" InputScope="Digits" Width="120" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,1"/>
+                    </Border>
+                    <Label x:Name="rentUtiliesHighLabel" Content="Utilities/Tenant Rent" Width="120"  Padding="0" Margin="0,5,0,0">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Border BorderThickness="1" CornerRadius="6" Height="40" BorderBrush="#FFABADB3">
+                        <TextBlock x:Name="rentUtiliesHighBlock" InputScope="Digits" Width="120" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,1"/>
+                    </Border>
+                </StackPanel>
+            </GroupBox>
+            <Label x:Name="fortypercentLabel" Content="Forty Percent" Width="100" Padding="0" Margin="0,5,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                <TextBlock x:Name="fortypercentTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" />
+            </Border>
+            <Label x:Name="maxrentLabel" Content="Rent (Income)" Width="100" Padding="0" Margin="0,5,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                <TextBlock x:Name="maxrentTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" />
+            </Border>
+        </StackPanel>
+        
+        <StackPanel>
+            <GroupBox x:Name="utilitiesRentgroupBox" Header="Utility">
+                <StackPanel>
+                    <Label x:Name="utilitiesRentLabel" Content="Total Rent" Width="120"  Padding="0" Margin="0,5,0,0">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Border BorderThickness="1" CornerRadius="6" Height="40" BorderBrush="#FFABADB3">
+                        <TextBlock x:Name="utilitiesRentTextBlock" InputScope="Digits" Width="120" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,1"/>
+                    </Border>
+                    <Label x:Name="utilitiesRentUtiliesLabel" Content="Utilities/Tenant Rent" Width="120"  Padding="0" Margin="0,5,0,0">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Border BorderThickness="1" CornerRadius="6" Height="40" BorderBrush="#FFABADB3">
+                        <TextBlock x:Name="utilitiesRentUtiliesTextBlock" InputScope="Digits" Width="120" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,1"/>
+                    </Border>
+                </StackPanel>
+            </GroupBox>
+            <Label x:Name="maxrentsubsLabel" Content="Rent (Subsidy)" Width="100" Padding="0" Margin="0,5,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                <TextBlock x:Name="maxrentsubsTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" />
+            </Border>
+        </StackPanel>
+
+    </StackPanel>
+</Window>

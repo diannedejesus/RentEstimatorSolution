@@ -2,7 +2,7 @@
   "page1": [
     {
       "type": "title",
-      "content": "¿Puedo Pagar la Unidad que Escogí?"
+      "content": "¿Como se Calcula el Subsidio de Alquiler?"
     },
 
     {
@@ -39,13 +39,6 @@
     },
 
     {
-      "type": "table",
-      "content": [
-        [ "Renta Estimada", "{{rentEstimada}}" ]
-      ]
-    },
-
-    {
       "type": "subtext",
       "content": "* El mayor de (1) 10 por ciento de ingreso mensual, (2) 30 por ciento del ingreso mensual ajustado, o (3) la renta mínima [$50.00]."
     },
@@ -56,29 +49,17 @@
     }
   ],
   "page2": [
-      {
-        "type": "title",
-        "content": "¿Cuál es el Costo de la Unidad?"
-      },
-
     {
-      "type": "table2",
+      "type": "title",
+      "content": "¿Cuál es el Costo de Utilidades?"
+    },
+    {
+      "type": "table2Header",
       "bg": "false",
       "content": [
-        [ "Renta Solicitado", "$__________" ]
+        [ "TIPO DE UTILIDAD", "COSTO ESTIMADO" ]
       ]
     },
-
-      {
-        "type": "header",
-        "content": "Utilidades no incluidos"
-      },
-
-      {
-        "type": "paragraph",
-        "content": "Anote la cantidad de cada servicio según estipulado en la hoja de utilidades dentro de su, paquete."
-      },
-
     {
       "type": "table2",
       "bg": "true",
@@ -92,15 +73,30 @@
         [ "Microhonda", "{{microwave}}" ],
         [ "Nevera", "{{refridgerator}}" ]
       ]
-    },
+    }
+  ],
 
+  "page3": [
     {
-      "type": "table2",
-      "bg": "false",
-      "content": [
-        [ "Total de Utilidades", "$__________" ],
-        [ "Renta Bruta", "$__________" ]
-      ]
+      "type": "title",
+      "content": "¿Puedo Pagar la Unidad que Escogí?"
+    },
+    {
+      "type": "subtitle",
+      "content": ""
+    },
+    {
+      "type": "paragraph",
+      "content": "El Subsidio se basa en un alquiler que incluye todo los utilidades. Muchos arrendadores no incluyen los utilidades por eso incluimos el calculo sin utilidades.  El rango se basa en el totalidad del subsidio elegible para  la familiar y los ingresos familiar. Esto es un estimado y las cantidades actuales pueden variar."
+    },
+    {
+      "type": "table3",
+      "content": {
+        "headers": [ "SIN UTILIDADES", "CON UTILIDADES" ],
+        "labels": [ "Alquiler Total ", "Pago Familiar ", "Pago Subsidio " ],
+        "table1": [ "{{alquilerMin}} - {{alquilerMax}}", "{{pagoMin}} - {{pagoMax}}", "{{subsidioMin}} - {{subsidioMax}}" ],
+        "table2": [ "{{alquilerUtilMin}} - {{alquilerUtilMax}}", "{{pagoUtilMin}} - {{pagoUtilMax}}", "{{subsidioUtilMin}} - {{subsidioUtilMax}}" ]
+      }
     }
   ]
 }

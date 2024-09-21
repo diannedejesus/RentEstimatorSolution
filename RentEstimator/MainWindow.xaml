@@ -5,86 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentEstimator"
         mc:Ignorable="d"
-        Width="185" Height="460" Icon="assets/logo2.png"
+        Width="165" Height="470" Icon="assets/logo2.png"
         MouseDown="Window_MouseDown" WindowStyle="ToolWindow" ResizeMode="NoResize">
     <Window.DataContext>
         <local:RentModel />
     </Window.DataContext>
-    <StackPanel>
-        <DockPanel Height="20">
-            <Menu DockPanel.Dock="Top" Height="20" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Background="{x:Null}">
-                <MenuItem Header="_☰" HorizontalAlignment="Stretch" FlowDirection="LeftToRight" FontSize="14">
-                    <MenuItem Header="_Payment Standard" Click="menuOpenPaymentStandard_Click" />
-                    <MenuItem Header="_Utilities Allowance" Click="menuOpenUtilitiesAllowance_Click" />
-                    <MenuItem Header="_Edit Text" Click="menuOpenEditText_Click" />
-                    <Separator />
-                    <MenuItem Header="_Exit" />
-                </MenuItem>
-            </Menu>
-        </DockPanel>
-        <Label x:Name="title" Content="Rent Estimator" HorizontalContentAlignment="Center" Width="150" FontSize="18" FontFamily="Segoe UI Black" Foreground="#FF0050A9" Margin="0,0,0,10"/>
-        <Label x:Name="vouchersizeLabel" Content="Voucher Size" Width="78">
-            <Label.Foreground>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
-            </Label.Foreground>
-        </Label>
-        <TextBox x:Name="vouchersizeTextBox" Style="{StaticResource MainWindowErrorStyle}" InputScope="Digits" Width="120" FontSize="24" Height="46" TextAlignment="Center" MaxLines="1" MaxLength="4" VerticalContentAlignment="Center" Padding="-8" Margin="0,0,0,10" >
-            <TextBox.Text>
-                <Binding Path="VoucherSize" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:RentValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+    <StackPanel Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Left" Margin="0,0,15,0">
+            <DockPanel Height="20">
+                <Menu DockPanel.Dock="Top" Height="20" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Background="{x:Null}">
+                    <MenuItem Header="_☰" HorizontalAlignment="Stretch" FlowDirection="LeftToRight" FontSize="14">
+                        <MenuItem Header="_Rent Calculator" Click="MenuOpenRentCalculator_Click" />
+                        <MenuItem Header="_Payment Standard" Click="MenuOpenPaymentStandard_Click" />
+                        <MenuItem Header="_Utilities Allowance" Click="MenuOpenUtilitiesAllowance_Click" />
+                        <MenuItem Header="_Edit Text" Click="MenuOpenEditText_Click" />
+                        <Separator />
+                        <MenuItem Header="_Exit" />
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+            <Label x:Name="title" Content="Rent Estimator" HorizontalContentAlignment="Center" Width="150" FontSize="18" FontFamily="Segoe UI Black" Foreground="#FF0050A9" Margin="0,0,0,10"/>
+            <Label x:Name="vouchersizeLabel" Content="Voucher Size" Width="78">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+            <TextBox x:Name="vouchersizeTextBox" Style="{StaticResource MainWindowErrorStyle}" InputScope="Digits" Width="120" FontSize="24" Height="46" TextAlignment="Center" MaxLines="1" MaxLength="4" VerticalContentAlignment="Center" Padding="-8" Margin="0,0,0,10" >
+                <TextBox.Text>
+                    <Binding Path="VoucherSize" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:RentValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
 
-        <Label x:Name="annualIncomeLabel" Content="Annual Income" Width="90">
-            <Label.Foreground>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
-            </Label.Foreground>
-        </Label>
-        <TextBox x:Name="annualincomeTextBox" Style="{StaticResource MainWindowErrorStyle}" Width="120" InputScope="Number" FontSize="24" Height="46" TextAlignment="Center" VerticalContentAlignment="Center" Padding="-8" Margin="0,0,0,10">
-            <TextBox.Text>
-                <Binding Path="AnnualIncome" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:RentValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+            <Label x:Name="annualIncomeLabel" Content="Annual Income" Width="90">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+            <TextBox x:Name="annualincomeTextBox" Style="{StaticResource MainWindowErrorStyle}" Width="120" InputScope="Number" FontSize="24" Height="46" TextAlignment="Center" VerticalContentAlignment="Center" Padding="-8" Margin="0,0,0,10">
+                <TextBox.Text>
+                    <Binding Path="AnnualIncome" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:RentValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
 
-        <Label x:Name="dependantsLabel" Content="Dependants" Width="73">
-            <Label.Foreground>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
-            </Label.Foreground>
-        </Label>
-        <TextBox x:Name="dependentsTextBox" Style="{StaticResource MainWindowErrorStyle}" Width="120" InputScope="Digits" FontSize="24" Height="46" TextAlignment="Center" VerticalContentAlignment="Center" Padding="-8" Margin="0,0,0,10" >
-            <TextBox.Text>
-                <Binding Path="Dependants" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:RentValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+            <Label x:Name="dependantsLabel" Content="Dependants" Width="73">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GrayTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+            <TextBox x:Name="dependentsTextBox" Style="{StaticResource MainWindowErrorStyle}" Width="120" InputScope="Digits" FontSize="24" Height="46" TextAlignment="Center" VerticalContentAlignment="Center" Padding="-8" Margin="0,0,0,10" >
+                <TextBox.Text>
+                    <Binding Path="Dependants" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:RentValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
 
-        <CheckBox x:Name="eldelydisabledCheckBox" Content="Handicap/Elderly" Width="120" Height="38" VerticalContentAlignment="Center" FontWeight="Bold" Margin="0,0,0,12"/>
-        <Button x:Name="createpdfButton" Content="Create PDF" Click="button_Click" Width="120" Height="38" FontSize="14" FontFamily="Segoe UI Black" BorderBrush="Transparent" >
-            <Button.Style>
-                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource RoundButton}">
-                    <Setter Property="IsEnabled" Value="False" />
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding ElementName=dependentsTextBox, Path=(Validation.HasError)}" Value="false" />
-                                <Condition Binding="{Binding ElementName=annualincomeTextBox, Path=(Validation.HasError)}" Value="false" />
-                                <Condition Binding="{Binding ElementName=vouchersizeTextBox, Path=(Validation.HasError)}" Value="false" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="IsEnabled" Value="True" />
-                        </MultiDataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+            <CheckBox x:Name="eldelydisabledCheckBox" Content="Handicap/Elderly" Width="120" Height="38" VerticalContentAlignment="Center" FontWeight="Bold" Margin="0,0,0,12"/>
+            <Button x:Name="createpdfButton" Content="Create PDF" Click="button_Click" Width="120" Height="38" FontSize="14" FontFamily="Segoe UI Black" BorderBrush="Transparent" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource RoundButton}">
+                        <Setter Property="IsEnabled" Value="False" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=dependentsTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=annualincomeTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=vouchersizeTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
     </StackPanel>
 </Window>
