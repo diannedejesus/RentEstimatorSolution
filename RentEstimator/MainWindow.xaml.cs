@@ -34,6 +34,7 @@ namespace RentEstimator
     /// </summary>
     public partial class MainWindow : Window
     {
+        RentCalculations calculate = new RentCalculations();
         public MainWindow()
         {
             InitializeComponent();
@@ -66,7 +67,7 @@ namespace RentEstimator
 
             try
             {
-                RentCalculations calculate = new RentCalculations();
+                
 
                 calculate.VoucherSize = voucherSize;
                 calculate.AnnualIncome = annualIncome;
@@ -225,8 +226,8 @@ namespace RentEstimator
 
         private void MenuOpenRentCalculator_Click(object sender, RoutedEventArgs e)
         {
-            //EditText openSelectedMenu = new EditText();
-            //openSelectedMenu.Show();
+            rentCalculator openSelectedMenu = new rentCalculator(calculate.VoucherSize, calculate.AnnualIncome, calculate.Dependants, calculate.isElderlyHandicap);
+            openSelectedMenu.Show();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

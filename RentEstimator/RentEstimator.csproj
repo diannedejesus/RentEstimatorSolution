@@ -157,6 +157,7 @@
     <Compile Include="EditText.xaml.cs">
       <DependentUpon>EditText.xaml</DependentUpon>
     </Compile>
+    <Compile Include="models\CalculateModel.cs" />
     <Compile Include="models\UtilitiesModel.cs" />
     <Compile Include="models\RentModel.cs" />
     <Compile Include="classes\ObservableObject.cs" />
@@ -166,8 +167,8 @@
     <Compile Include="classes\pdfGenerator.cs" />
     <Compile Include="classes\PdfTemplateBuilder.cs" />
     <Compile Include="classes\RentCalculations.cs" />
-    <Compile Include="rentCalculator.xaml.cs">
-      <DependentUpon>rentCalculator.xaml</DependentUpon>
+    <Compile Include="RentCalculator.xaml.cs">
+      <DependentUpon>RentCalculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="utilityAllowance.xaml.cs">
       <DependentUpon>utilityAllowance.xaml</DependentUpon>
@@ -197,7 +198,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="rentCalculator.xaml">
+    <Page Include="RentCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
