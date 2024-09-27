@@ -263,9 +263,32 @@ namespace RentCalculator
             return ((int)Math.Floor(i / 10)) * 10;
         }
 
-        public decimal GrossRent(int rentAmount)
+        public int GrossRent(int rentAmount)
         {
-            return 0;
+            return rentAmount + TotalUtilities(VoucherSize);
+        }
+        public decimal GrossRent(int rentAmount, decimal utility)
+        {
+            return rentAmount + utility;
+        }
+
+        public decimal ApplicableSubsidy(int grossRent)
+        {
+            return Math.Min(grossRent, GetFMR());
+        }
+
+        public decimal TotalHAP(int applicableSubsidy)
+        {
+            //rent
+            //grossRent
+            return applicableSubsidy - TTPDetermination();
+        }
+
+        public decimal CalculateTotalHAP(int rent)
+        {
+            int grossRent = GrossRent(rent);
+            decimal applicableSubsidy = ApplicableSubsidy(grossRent);
+            return applicableSubsidy - TTPDetermination();
         }
     }
 }

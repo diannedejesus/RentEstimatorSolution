@@ -20,15 +20,12 @@ namespace RentEstimator
     /// </summary>
     public partial class rentCalculator : Window
     {
-        RentCalculations calculate = new RentCalculations();
-        public rentCalculator(int voucherSize, decimal annualIncome, int dependantsAmount, bool elderlyOrHandicapped)
+        private RentCalculations calculate;
+        public rentCalculator(RentCalculations viewModel)
         {
             InitializeComponent();
 
-            calculate.VoucherSize = voucherSize;
-            calculate.AnnualIncome = annualIncome;
-            calculate.Dependants = dependantsAmount;
-            calculate.isElderlyHandicap = elderlyOrHandicapped;
+            calculate = viewModel;
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -39,12 +36,17 @@ namespace RentEstimator
             decimal topSubsidy = FMR - totalTenantPay;
             decimal estimatedGrossRent = topSubsidy + calculate.FortypercentAdjusted();
 
-           
+            TTPTextBlock.Text = $"${totalTenantPay:0.00}";
+            fortypercentTextBox.Text = $"${calculate.FortypercentAdjusted():0.00}";
+            estimatedGrossRentTextBox.Text = $"${estimatedGrossRent:0.00}";
+            topSubsidyTextBox.Text = $"${topSubsidy:0.00}";
+
             decimal utilityAllowance = calculate.TotalUtilities(calculate.VoucherSize);
             decimal currentRent = FMR - utilityAllowance;
+            maxrentsubsTextBox.Text = $"${currentRent:0.00}";
 
             ComboBoxItem currentItem = (ComboBoxItem)comboBox.SelectedItem;
-            RentgroupBox.Header = currentItem.Content.ToString();
+            //RentgroupBox.Header = currentItem.Content.ToString();
 
             if (currentItem.Content != null) 
             {
@@ -70,10 +72,11 @@ namespace RentEstimator
             decimal totalHAP = applicableSubsidy - totalTenantPay;
             decimal HAPOwner = Math.Min(currentRent, totalHAP);
 
-            RentTextBlock.Text = currentRent.ToString();
-            ApplicableSubsidyTextBox.Text = applicableSubsidy.ToString();
-            TotalHAPTextBox.Text = totalHAP.ToString();
-            HAPOwnerTextBox.Text = HAPOwner.ToString();
+            GrossRentTextBox.Text = $"${grossRent:0.00}";
+            RentTextBlock.Text = $"${currentRent:0.00}";
+            ApplicableSubsidyTextBox.Text = $"${applicableSubsidy:0.00}";
+            TotalHAPTextBox.Text = $"${totalHAP:0.00}";
+            HAPOwnerTextBox.Text = $"${HAPOwner:0.00}";
 
             if (currentRent - HAPOwner > 0)
             {

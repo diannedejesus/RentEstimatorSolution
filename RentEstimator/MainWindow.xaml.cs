@@ -34,7 +34,7 @@ namespace RentEstimator
     /// </summary>
     public partial class MainWindow : Window
     {
-        RentCalculations calculate = new RentCalculations();
+        private RentCalculations calculate = new RentCalculations();
         public MainWindow()
         {
             InitializeComponent();
@@ -67,13 +67,10 @@ namespace RentEstimator
 
             try
             {
-                
-
                 calculate.VoucherSize = voucherSize;
                 calculate.AnnualIncome = annualIncome;
                 calculate.Dependants = dependantsAmount;
                 calculate.isElderlyHandicap = elderlyOrHandicapped;
-
 
                 replacemntValues.Add("{{estander}}", $"${calculate.GetFMR()}.00");
                 replacemntValues.Add("{{pagoInquilino}}", $"${Math.Round(calculate.TTPDetermination(), 2, MidpointRounding.AwayFromZero):0.00}");
@@ -92,26 +89,12 @@ namespace RentEstimator
                 replacemntValues.Add("{{refridgerator}}", $"${calculate.GetUtilityAmount(voucherSize, "fridge")}.00");
 
                 int utilityAllowance = calculate.TotalUtilities(calculate.VoucherSize);
-                //decimal customRentValue = Decimal.Parse(customRentTextBox.Text);
                 decimal FMR = calculate.GetFMR();
                 decimal totalTenantPay = calculate.TTPDetermination();
                 decimal topSubsidy = FMR - totalTenantPay;
                 decimal estimatedGrossRent = topSubsidy + calculate.FortypercentAdjusted();
                 decimal topRent = Math.Max(estimatedGrossRent - utilityAllowance, FMR - utilityAllowance);
-                //decimal rent = customRentValue > 0 ? customRentValue : topRent;
-                //decimal rent = topRent;
-                //decimal grossRent = rent + utilityAllowance;
-                //decimal totalHAP = Math.Min(calculate.GetFMR(), grossRent) - totalTenantPay;
-                //decimal HAPowner = Math.Min(rent, totalHAP);
-                //decimal tenantRent = rent - HAPowner < 0 ? 0 : rent - HAPowner;
-                //decimal utilityReimbursement = 0;
                 decimal lowestRent = Math.Min(estimatedGrossRent - utilityAllowance, FMR - utilityAllowance);
-
-
-                //if (rent - HAPowner <= 0)
-                //{
-                //    utilityReimbursement = Math.Min(totalHAP - HAPowner, utilityAllowance);
-                //}
 
                 decimal lowestGrossRent = lowestRent + utilityAllowance;
                 decimal lowestApplicableSubsidy = Math.Min(lowestGrossRent, FMR);
@@ -136,16 +119,6 @@ namespace RentEstimator
                 decimal utitlyLowTotalHAP = utitlyLowApplicableSubsidy - totalTenantPay;
                 decimal utitlyLowHAPOwner = Math.Min(utilLowRent, utitlyLowTotalHAP);
 
-                //TTPTextBlock.Text = $"${Math.Round(totalTenantPay, 2, MidpointRounding.AwayFromZero):0.00}";
-                //maxsubsidyTextBox.Text = $"${(topSubsidy):0.00}";
-                //fortypercentTextBox.Text = $"${Math.Round(calculate.FortypercentAdjusted(), 2, MidpointRounding.AwayFromZero):0.00}";
-                //maxrentTextBox.Text = $"${(calculate.MaxRentIncome() - utilityAllowance):0.00}";
-                //maxrentsubsTextBox.Text = $"${FMR - utilityAllowance:0.00}";
-
-                //lowestRentTextBlock.Text = $"${lowestRent:0.00}";
-                //highestRentTextBlock.Text = $"${topRent:0.00}";
-                //utilitiesRentTextBlock.Text = $"${utilTopRent:0.00}";
-
                 decimal pagoMin = Math.Max(0, lowestRent - lowestTotalHAP);
                 decimal pagoMax = Math.Max(0, topRent - highestTotalHAP);
                 decimal pagoUtilMin = Math.Max(0, utilLowRent - utitlyLowTotalHAP);
@@ -158,45 +131,6 @@ namespace RentEstimator
                 replacemntValues.Add("{{alquilerUtilMin}} - {{alquilerUtilMax}}", $" ${Math.Floor(utilLowRent/10)*10}.00 - ${Math.Floor(utilTopRent/10)*10}.00 ");
                 replacemntValues.Add("{{pagoUtilMin}} - {{pagoUtilMax}}", $" ${pagoUtilMin}.00 - ${pagoUtilMax}.00 ");
                 replacemntValues.Add("{{subsidioUtilMin}} - {{subsidioUtilMax}}", $" ${utitlyLowHAPOwner}.00 - ${utitlyHAPOwner}.00 ");
-                
-                //calculate highest rent tenants pay or utility payment
-                if (topRent - highestHAPOwner > 0) 
-                {
-                    //rentUtiliesHighBlock.Text = $"${topRent - highestTotalHAP:0.00}";
-                    //rentUtiliesHighLabel.Content = "Tenant Rent";
-                }
-                else
-                {
-                    //rentUtiliesHighBlock.Text = $"${Math.Min(highestTotalHAP - highestHAPOwner, utilityAllowance):0.00}";
-                    //rentUtiliesHighLabel.Content = "Utility Reimbursement";
-                }
-
-                //calculate lowest rent tenants pay or utility payment
-                if (lowestRent - lowestHAPOwner > 0)
-                {
-                    //rentUtiliesLowBlock.Text = $"${lowestRent - lowestTotalHAP:0.00}";
-                    //rentUtiliesLowLabel.Content = "Tenant Rent";
-                }
-                else
-                {
-                    //rentUtiliesLowBlock.Text = $"${Math.Min(lowestTotalHAP - lowestHAPOwner, utilityAllowance):0.00}";
-                    //rentUtiliesLowLabel.Content = "Utility Reimbursement";
-                }
-
-                //calculate included utility rent tenants pay or utility payment
-                if (utilTopRent - utitlyHAPOwner > 0)
-                {
-                    //utilitiesRentUtiliesTextBlock.Text = $"${utilTopRent - utitlyTotalHAP:0.00}";
-                    //utilitiesRentUtiliesLabel.Content = "Tenant Rent";
-                }
-                else
-                {
-                    //utilitiesRentUtiliesTextBlock.Text = $"${Math.Min(utitlyTotalHAP - utitlyHAPOwner, includedUtility):0.00}";
-                    //utilitiesRentUtiliesLabel.Content = "Utility Reimbursement";
-                }
-
-
-
 
                 //NOTE: FILES
                 new PdfTemplateBuilder(@"assets/template.json", @"assets/firstpage.json", replacemntValues);
@@ -226,7 +160,7 @@ namespace RentEstimator
 
         private void MenuOpenRentCalculator_Click(object sender, RoutedEventArgs e)
         {
-            rentCalculator openSelectedMenu = new rentCalculator(calculate.VoucherSize, calculate.AnnualIncome, calculate.Dependants, calculate.isElderlyHandicap);
+            rentCalculator openSelectedMenu = new rentCalculator(calculate);
             openSelectedMenu.Show();
         }
 
@@ -234,8 +168,6 @@ namespace RentEstimator
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
-        }
-
-        
+        } 
     }
 }

@@ -157,7 +157,6 @@
     <Compile Include="EditText.xaml.cs">
       <DependentUpon>EditText.xaml</DependentUpon>
     </Compile>
-    <Compile Include="models\CalculateModel.cs" />
     <Compile Include="models\UtilitiesModel.cs" />
     <Compile Include="models\RentModel.cs" />
     <Compile Include="classes\ObservableObject.cs" />
