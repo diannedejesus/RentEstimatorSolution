@@ -90,33 +90,25 @@ namespace RentEstimator
 
                 int utilityAllowance = calculate.TotalUtilities(calculate.VoucherSize);
                 decimal FMR = calculate.GetFMR();
-                decimal totalTenantPay = calculate.TTPDetermination();
-                decimal topSubsidy = FMR - totalTenantPay;
+                //decimal totalTenantPay = calculate.TTPDetermination();
+                decimal topSubsidy = FMR - calculate.TTPDetermination();
                 decimal estimatedGrossRent = topSubsidy + calculate.FortypercentAdjusted();
                 decimal topRent = Math.Max(estimatedGrossRent - utilityAllowance, FMR - utilityAllowance);
                 decimal lowestRent = Math.Min(estimatedGrossRent - utilityAllowance, FMR - utilityAllowance);
 
-                decimal lowestGrossRent = lowestRent + utilityAllowance;
-                decimal lowestApplicableSubsidy = Math.Min(lowestGrossRent, FMR);
-                decimal lowestTotalHAP = lowestApplicableSubsidy - totalTenantPay;
+                decimal lowestTotalHAP = calculate.CalculateTotalHAP(lowestRent);
                 decimal lowestHAPOwner = Math.Min(lowestRent, lowestTotalHAP);
 
-                decimal highestGrossRent = topRent + utilityAllowance;
-                decimal highestApplicableSubsidy = Math.Min(highestGrossRent, FMR);
-                decimal highestTotalHAP = highestApplicableSubsidy - totalTenantPay;
+                decimal highestTotalHAP = calculate.CalculateTotalHAP(topRent);
                 decimal highestHAPOwner = Math.Min(topRent, highestTotalHAP);
 
-                decimal includedUtility = calculate.GetTotalUtilities(calculate.VoucherSize, true, true, false, false, true, false);
+                int includedUtility = calculate.GetTotalUtilities(calculate.VoucherSize, true, true, false, false, true, false);
                 decimal utilTopRent = Math.Max(estimatedGrossRent - includedUtility, FMR - includedUtility);
-                decimal utitlyGrossRent = utilTopRent + includedUtility;
-                decimal utitlyApplicableSubsidy = Math.Min(utitlyGrossRent, FMR);
-                decimal utitlyTotalHAP = utitlyApplicableSubsidy - totalTenantPay;
+                decimal utitlyTotalHAP = calculate.CalculateTotalHAP(utilTopRent, includedUtility);
                 decimal utitlyHAPOwner = Math.Min(utilTopRent, utitlyTotalHAP);
 
                 decimal utilLowRent = Math.Min(estimatedGrossRent - includedUtility, FMR - includedUtility);
-                decimal utitlyLowGrossRent = utilLowRent + includedUtility;
-                decimal utitlyLowApplicableSubsidy = Math.Min(utitlyLowGrossRent, FMR);
-                decimal utitlyLowTotalHAP = utitlyLowApplicableSubsidy - totalTenantPay;
+                decimal utitlyLowTotalHAP = calculate.CalculateTotalHAP(utilLowRent, includedUtility);
                 decimal utitlyLowHAPOwner = Math.Min(utilLowRent, utitlyLowTotalHAP);
 
                 decimal pagoMin = Math.Max(0, lowestRent - lowestTotalHAP);
