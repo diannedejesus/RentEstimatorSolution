@@ -8,7 +8,7 @@
         Title="Rent Calculator" Height="400" Width="430">
     <StackPanel Orientation="Horizontal" Margin="10">
         <StackPanel Margin="10,0,30,0">
-            <Label x:Name="label" Content="Reference" FontFamily="Segoe UI Black" HorizontalAlignment="Center" Background="{x:Null}">
+            <Label x:Name="label" Content="Reference" HorizontalAlignment="Center" Background="{x:Null}" FontWeight="Bold">
                 <Label.Foreground>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.WindowTextColorKey}}"/>
                 </Label.Foreground>
@@ -117,54 +117,58 @@
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
                 </Border.Background>
-                <GroupBox x:Name="RentgroupBox" Header="Rent Calculation" FontWeight="Bold">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel Margin="0,0,10,0">
-                                <Label x:Name="GrossRentLabel" Content="Gross Rent" Width="100" Padding="0" Margin="0,5,0,0" FontWeight="Normal">
-                                    <Label.Foreground>
-                                        <SolidColorBrush Color="#FF565555"/>
-                                    </Label.Foreground>
-                                </Label>
-                                <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
-                                    <TextBlock x:Name="GrossRentTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" FontWeight="Normal" />
-                                </Border>
-                            </StackPanel>
-                            <StackPanel>
-                                <Label x:Name="ApplicableSubsidyLabel" Content="Applicable Subsidy" Width="100" Padding="0" Margin="0,5,0,0" FontWeight="Normal">
-                                    <Label.Foreground>
-                                        <SolidColorBrush Color="#FF565555"/>
-                                    </Label.Foreground>
-                                </Label>
-                                <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
-                                    <TextBlock x:Name="ApplicableSubsidyTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" FontWeight="Normal" />
-                                </Border>
-                            </StackPanel>
+
+                <StackPanel>
+                    <Label x:Name="label3" Content="Rent Calculations" HorizontalAlignment="Center" Background="{x:Null}" FontWeight="Bold">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.WindowTextColorKey}}"/>
+                        </Label.Foreground>
+                    </Label>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,10,0">
+                            <Label x:Name="GrossRentLabel" Content="Gross Rent" Width="100" Padding="0" Margin="0,5,0,0" FontWeight="Normal">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="#FF565555"/>
+                                </Label.Foreground>
+                            </Label>
+                            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                                <TextBlock x:Name="GrossRentTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" FontWeight="Normal" />
+                            </Border>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel Margin="0,0,10,0">
-                                <Label x:Name="TotalHAPLabel" Content="Total HAP" Width="100" Padding="0" Margin="0,5,0,0" FontWeight="Normal">
-                                    <Label.Foreground>
-                                        <SolidColorBrush Color="#FF565555"/>
-                                    </Label.Foreground>
-                                </Label>
-                                <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
-                                    <TextBlock x:Name="TotalHAPTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" FontWeight="Normal" />
-                                </Border>
-                            </StackPanel>
-                            <StackPanel>
-                                <Label x:Name="HAPOwnerLabel" Content="HAP To Owner" Width="100" Padding="0" Margin="0,5,0,0" FontWeight="Normal">
-                                    <Label.Foreground>
-                                        <SolidColorBrush Color="#FF565555"/>
-                                    </Label.Foreground>
-                                </Label>
-                                <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
-                                    <TextBlock x:Name="HAPOwnerTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" FontWeight="Normal" />
-                                </Border>
-                            </StackPanel>
+                        <StackPanel>
+                            <Label x:Name="ApplicableSubsidyLabel" Content="Applicable Subsidy" Width="100" Padding="0" Margin="0,5,0,0" FontWeight="Normal">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="#FF565555"/>
+                                </Label.Foreground>
+                            </Label>
+                            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                                <TextBlock x:Name="ApplicableSubsidyTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" FontWeight="Normal" />
+                            </Border>
                         </StackPanel>
                     </StackPanel>
-                </GroupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,10,0">
+                            <Label x:Name="TotalHAPLabel" Content="Total HAP" Width="100" Padding="0" Margin="0,5,0,0" FontWeight="Normal">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="#FF565555"/>
+                                </Label.Foreground>
+                            </Label>
+                            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                                <TextBlock x:Name="TotalHAPTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" FontWeight="Normal" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label x:Name="HAPOwnerLabel" Content="HAP To Owner" Width="100" Padding="0" Margin="0,5,0,0" FontWeight="Normal">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="#FF565555"/>
+                                </Label.Foreground>
+                            </Label>
+                            <Border BorderThickness="1" CornerRadius="6" BorderBrush="#FFABADB3">
+                                <TextBlock x:Name="HAPOwnerTextBox" InputScope="Digits" Width="100" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,2" FontWeight="Normal" />
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
             </Border>
         </StackPanel>
     </StackPanel>

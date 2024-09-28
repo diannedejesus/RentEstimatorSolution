@@ -90,11 +90,10 @@ namespace RentEstimator
 
                 int utilityAllowance = calculate.TotalUtilities(calculate.VoucherSize);
                 decimal FMR = calculate.GetFMR();
-                //decimal totalTenantPay = calculate.TTPDetermination();
-                decimal topSubsidy = FMR - calculate.TTPDetermination();
-                decimal estimatedGrossRent = topSubsidy + calculate.FortypercentAdjusted();
+                decimal estimatedGrossRent = calculate.MaxRentIncome();
                 decimal topRent = Math.Max(estimatedGrossRent - utilityAllowance, FMR - utilityAllowance);
-                decimal lowestRent = Math.Min(estimatedGrossRent - utilityAllowance, FMR - utilityAllowance);
+                decimal lowestRent = calculate.LowestRent();  //Math.Min(estimatedGrossRent - utilityAllowance, FMR - utilityAllowance);
+
 
                 decimal lowestTotalHAP = calculate.CalculateTotalHAP(lowestRent);
                 decimal lowestHAPOwner = Math.Min(lowestRent, lowestTotalHAP);
@@ -116,13 +115,13 @@ namespace RentEstimator
                 decimal pagoUtilMin = Math.Max(0, utilLowRent - utitlyLowTotalHAP);
                 decimal pagoUtilMax = Math.Max(0, utilTopRent - utitlyTotalHAP);
 
-                replacemntValues.Add("{{alquilerMin}} - {{alquilerMax}}", $" ${Math.Floor(lowestRent / 10) * 10}.00 - ${Math.Floor(topRent / 10) * 10}.00 ");
-                replacemntValues.Add("{{pagoMin}} - {{pagoMax}}", $" ${pagoMin}.00 - ${pagoMax}.00 ");
-                replacemntValues.Add("{{subsidioMin}} - {{subsidioMax}}", $" ${lowestHAPOwner}.00 - ${highestHAPOwner}.00 ");
+                replacemntValues.Add("{{alquilerMin}} - {{alquilerMax}}", $" ${decimal.Truncate(Math.Floor(lowestRent / 10) * 10)}.00 - ${decimal.Truncate(Math.Floor(topRent / 10) * 10)}.00 ");
+                replacemntValues.Add("{{pagoMin}} - {{pagoMax}}", $" ${decimal.Truncate(pagoMin)}.00 - ${decimal.Truncate(pagoMax)}.00 ");
+                replacemntValues.Add("{{subsidioMin}} - {{subsidioMax}}", $" ${decimal.Truncate(lowestHAPOwner)}.00 - ${decimal.Truncate(highestHAPOwner)}.00 ");
 
-                replacemntValues.Add("{{alquilerUtilMin}} - {{alquilerUtilMax}}", $" ${Math.Floor(utilLowRent/10)*10}.00 - ${Math.Floor(utilTopRent/10)*10}.00 ");
-                replacemntValues.Add("{{pagoUtilMin}} - {{pagoUtilMax}}", $" ${pagoUtilMin}.00 - ${pagoUtilMax}.00 ");
-                replacemntValues.Add("{{subsidioUtilMin}} - {{subsidioUtilMax}}", $" ${utitlyLowHAPOwner}.00 - ${utitlyHAPOwner}.00 ");
+                replacemntValues.Add("{{alquilerUtilMin}} - {{alquilerUtilMax}}", $" ${decimal.Truncate(Math.Floor(utilLowRent/10)*10)}.00 - ${decimal.Truncate(Math.Floor(utilTopRent / 10) * 10)}.00 ");
+                replacemntValues.Add("{{pagoUtilMin}} - {{pagoUtilMax}}", $" ${decimal.Truncate(pagoUtilMin)}.00 - ${decimal.Truncate(pagoUtilMax)}.00 ");
+                replacemntValues.Add("{{subsidioUtilMin}} - {{subsidioUtilMax}}", $" ${decimal.Truncate(utitlyLowHAPOwner)}.00 - ${decimal.Truncate(utitlyHAPOwner)}.00 ");
 
                 //NOTE: FILES
                 new PdfTemplateBuilder(@"assets/template.json", @"assets/firstpage.json", replacemntValues);

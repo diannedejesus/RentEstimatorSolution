@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentEstimator"
         mc:Ignorable="d"
-        Width="230" Height="530" ResizeMode="NoResize" WindowStyle="ToolWindow">
+        Width="200" Height="530" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Window.DataContext>
         <local:PaymentStandardModel />
     </Window.DataContext>
-    <StackPanel Width="200">
-        <Label x:Name="title" Content="Payment Standard" HorizontalContentAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" />
+    <StackPanel HorizontalAlignment="Center">
+        <Label x:Name="title" Content="Payment Standard" HorizontalContentAlignment="Center" FontSize="18" FontFamily="Segoe UI Black" />
         <StackPanel Width="150">
             <GroupBox x:Name="groupBox_0br" Header="0 bedroom" Margin="0,0,0,15" Padding="2"  Foreground="SlateGray">
                 <DockPanel>

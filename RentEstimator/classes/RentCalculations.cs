@@ -279,6 +279,7 @@ namespace RentCalculator
 
         public decimal TotalHAP(int applicableSubsidy)
         {
+
             return applicableSubsidy - TTPDetermination();
         }
 
@@ -286,6 +287,7 @@ namespace RentCalculator
         {
             decimal grossRent = GrossRent(rent);
             decimal applicableSubsidy = ApplicableSubsidy(grossRent);
+
             return applicableSubsidy - TTPDetermination();
         }
 
@@ -293,6 +295,7 @@ namespace RentCalculator
         {
             decimal grossRent = GrossRent(rent, utility);
             decimal applicableSubsidy = ApplicableSubsidy(grossRent);
+
             return applicableSubsidy - TTPDetermination();
         }
     }
