@@ -1,12 +1,12 @@
-# RentEstimatorSolution
+# Rent Estimator
 
-This is a desktop application for creating rent estimations for HCV participates. It produces a standard form provided as an example from the previous HCV guidebook.
+This is a desktop application that creates a PDF handout of the estimated rent for HCV participates. In the menu there are options for updating the payment standard and utility allowance, also for modifying the header image and footer text. One more option available is the rent calculator window which shows the calculations for the current participant and allows you to see the different possible rents based on income, subsidy and utilities.
 
 ## Use
 
-Once downloaded and executed you will need to provide the payment standard for the desired area and utility allowance. These can be update through the the menu. You can opcionally provide an image and footer text for the document.
+Once downloaded and executed, you will need to provide the payment standard for the desired area and utility allowance. These can be update through the the menu. You can optionally provide an image and footer text for the document.
 
-Once the information is updated, in the main window you input the voucher size, the families anual income, the amount of dependants and whether the family is handicapped or elderly. The you click on the create pdf button and it will use the provide information to estimate the eligible rent range and fill in the appropiate utility allowance for the family.
+Once the information is updated, in the main window you input the voucher size, the families annual income, the amount of dependants and whether the family is handicapped/elderly. Then you click on the create pdf button and it will use the provide information to estimate the eligible rent range and fill in the appropiate utility allowance for the family.
 
 ## Rent Calculation Class
 
@@ -50,5 +50,3 @@ Several methods are available:
 (decimal) **Lowest rent**: Calculates the lowest rent. It calls TotalUtilities(\_voucherSize), GrossRent() and GetFMR() with the supplied values (set through the class from the main window or the defaults).
 
 (int) **Round off**: Rounds of a decimal value using the common calculation used in banking.
-
-## PdfTemplateBuilder Class
