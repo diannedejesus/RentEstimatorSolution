@@ -8,45 +8,46 @@ Once downloaded and executed, you will need to provide the payment standard for 
 
 Once the information is updated, in the main window you input the voucher size, the families annual income, the amount of dependants and whether the family is handicapped/elderly. Then you click on the create pdf button and it will use the provide information to estimate the eligible rent range and fill in the appropiate utility allowance for the family.
 
-## Rent Calculation Class
+## Main Window
 
-This class is used to calculate the estimated rent a participant will be eligible for. These values are based on the number and calculations for 2023. Some of these values are set to be changed in 2024.
+![The main window has three input boxes: voucher size, annual income, and dependants these inputs accept numeric inputs. It has a checkbox labeles handicap/elderly which identifies whether the family qualifies for that credit. It has one button labeled create PDF which creates the handout with the provide information. There is a menu button in the top right corner with other options.](mainwindow.png)
+![The menu window has 5 items, one being an exit button. The other four options are windows that permit editing or shows data, these are: rent calculator, payment standard, utilities allowance, and edit text.](menu.png)
 
-When the class is initialized for use it sets the path for FMR (payment standard) and utility allowance files. These are json files that contain the base values for these data and can be modified in the application.
+The main window has the following inputs:
 
-All variables have default values.
-(int) **Minimun rent**: 50
-(int) **voucher size**: 0
-(int) **dependants**: 0
-(decimal) **annual income**: 0
-(bool) **elderly or handicap**: false
+**Voucher size** is the largest payment standard that the family is eligible for. This is based on the number of members in the family and other factors that the agency takes into consideration for each family or on special circumstances that merit a reasonable accomadation for that family.
 
-**payment standard** is a dictionary of int, int
-**utility allowance** is a list of custom model (utilities model)
-**utilities model** is observableobject class that stores the values of bedroom, electricity, water, sewer, fridge, cooking, and microwave. All are int and more utilities values are used in programs but were not implemented in this application.
+**Annual income** is the total income, both earned and unearned that the family recieves. For employment gross income is used, for a business net income is used.
 
-The constructor verifies if the files for the payment standard and utility allowance are present. If so the data is extracted for use. If now then an eeror is thrown.
+**Dependants** is the amount of minors in the family or full time students (excluding the head of household and spouse/partner).
 
-Several methods are available:
+**Handicap/elderly** is when the head of household or spouse/partner is either over the age of 62 (elderly) or is handicapped (based on the housing definition of handicapped). Evidence must me submit to prove the handicap status of either family member.
 
-(decimal) **Adjusted Annual Income**: Calculate the annual adjusted income. Uses the supplied (either directly or set through the class) elderlyOrDisabled (boolean), dependants (decimal), and annulincome (decimal) to calculate it. Alternatively if no values is supplied it will use the defaults set in the class which are set to 0 and false.
+With the above data a families rent be estimated. The determination assures that the family is not paying more than 40% of their income in rent.
 
-(decimal) **TTP Determination**: Calculates the tenant total pay. If supplied (either directly or set through the class), it will use annualIncome (decimal), adjustedAnnualIncome (decimal) and miniminRent (decimal) to do the calculation. If no minimun rent is sent it will use the default of 50. If no values are sent then it will use the defualts of 0 and 50 (min Rent).
+Currently the PDF produced shows the calculation used to determine the families subsidy in a format that is standard to the program, it also produces a utility page and the rent estimation page. The rent estimation page is currently an experimental page that is being tested.
 
-(int) **Get FMR**: Fectches the correct payment standard for the supplied voucher size (int). If no voucher size is supplied (either directly or set through the class) it will use the default of 0.
+The menu in the right hand corner opens the following windows: rent calculator, payment standard, utility allowance, and edit text. It also contains a button for exiting the program.
 
-(int) **Total Utilities**: Adds all the utilites for the supplied voucher size (int).
+## Rent Calculator
 
-(int) **Get Total Utilities**: Adds the selected utilites for the selected voucher size (int), utitities are determined by a boolean.
+![The rent calculator window has on the right hand side a section called reference, under this section we have two main boxes labeled: income and subsidy. Under these we have a subsection named base calculation with contains three boxes: tenant pay, forty percent, and subsidy (-income). On the right hand side we have a section named estimated rent with three boxes: the first is a combo box followed by the total rent and utilies/tenant rent boxes. Under these is the subsection names rent calcualtions with four boxes theses arranged in two even columns. These are labeled: gross rent, applicable subsidy, total HAP, and HAP to Owner.](rentcalculator.png)
 
-(int) **Get Utility Amount**: Returns the selected utility (string: water, electricity, fridge, microwave, sewer, cooking) for the select voucher size (int).
+**Reference** contains the base calculation for all rents and the estimated maximun rents as base on the families income and solely on the subsidy.
 
-(decimal) **MaxSubsidy**: Calculates the max subsidy. If the payment standard (decimal) and TTP (decimal) is supplied (directly) those are used if not it will call GetFMR() and TTPDetermination() and use the values set through the class or the default values.
+**Estimaded rent** contains four calculation based on the reference data. These are: Lowest with Utilities, Highest with Utilities, Lowest, and Highest. For each option the user with be able to see the total rent and the families allotted porcion of the rent they will need to pay or the remaining unused subsidy which will be paid towards the families utility bill. The user will also be able to see other related calculations to the currently selected rent option to assure accuracy or for use with manual calculations.
 
-(decimal) **Forty percent adjusted**: Calculates the 40% of the monthly adjusted income. By calling AdjustedAnnualIncome() which will use the supplied data (set through the class from the main window or the defaults) to do the calculation.
+## Payment Standard
+![This window contains 5 boxes, each box is labeled as follows: 0 bedroom, 1 bedroom, 2 bedroom, 3 bedroom, and 4 bedroom. Each box is an input that accepts a numeric value is decorate with the dollar sign in front and .00 behind it. It also  contains an update button.](paymentstandard.png)
 
-(decimal) **Gross rent**: Calculates the gross rent by calling FortypercentAdjusted() and maxSubsidy() with the supplied values (set through the class from the main window or the defaults) for the calculation.
+This window allows the user to update/change the payment standard used in the rent calculation. It permits the user to enter up to the 4 bedroom payment standard, which is a numeric value.
 
-(decimal) **Lowest rent**: Calculates the lowest rent. It calls TotalUtilities(\_voucherSize), GrossRent() and GetFMR() with the supplied values (set through the class from the main window or the defaults).
+## Utilities Allowance
+![It contains a table layout with 7 columns and five rows. The row are contains the following headers: BR, Electricity, Water, Sewer, Fridge, Cooking, and Microwave. The first column (with the header BR) contains labels which are the following: 0, 1, 2, 3, and 4. The rest of the columns contain input boxes with a $ label in front and a .00 label after them. At the bottom you can find an update button.](utilityallowance.png)
 
-(int) **Round off**: Rounds of a decimal value using the common calculation used in banking.
+This window allows the user to update/change the utility allowance used in the rent calculation. It permits the user to manual modify each utility for each bedroom size.
+
+## Edit Text
+![The first input is labeled logo, and has a button after it called find. Underneath it is two inputs with the label footer with some dummy text to show what should be written. The top input has the text Municipality Locality and the input underneath has the text Phone Address City. At the bottom is an update button.](edittext.png)
+
+This window allows the user to update the header and footer of the PDF handout. The header needs to be and image while the footer is plain text.
